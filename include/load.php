@@ -26,7 +26,7 @@ if ( !defined('SITE_ROOT') ) {
 }
 
 //define("SITE_URL", "");
-define("SITE_URL", "/SOS_test");
+define("SITE_URL", "/SimpleApp");
 
 defined("INC_ROOT")? null: define("INC_ROOT", realpath(dirname(__FILE__)));
 define("LIB_PATH_INC", INC_ROOT.DS);
