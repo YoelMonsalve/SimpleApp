@@ -167,6 +167,73 @@ it can be appreciated that we first load the file, then **clean** the database, 
 
 An alternative design would have been through buttons to allow the user manually controlling when a new file is going to be uploaded, ... but that would be a more complicated architecture.
 
+#### Modularizing and reusable code
+
+When building this app, I also wanted to illustrate the concept of preferring modular design and reusable code, to keep the project ordered and easier to expand. In order to that, a class was defined in `api/sql/sql.php` (in its own namespace `\\API`) to keep all the basic functions related with SQL management (a kind of small framework), and the script `api/medication.php` contains methods to consult medications and gene info.
+
+```php
+namespace API;
+
+/** 
+ * This script is automatically called by 'load.php'
+ *
+ * SQL_PHP
+ * Common functions that interact with the MySQL Database.
+ *
+ * Author  : Yoel Monsalve
+ * Date    : 2021-03-15
+ * Modified: 2021-03-15
+ */
+require_once(dirname(__FILE__).'/../../include/load.php');
+
+class sql {
+
+  private $db;
+
+  public function __construct($the_db) {
+    $this->db = $the_db;
+  }
+
+  /**
+   * Get the internal database object
+   *
+   * @return  [class database]  the Database
+   */
+  public function getDb() 
+  {
+    return $this->db;
+  }
+
+  /**
+   * Escape method: to prevent against SQL-injection
+   */
+  public function escape($str) 
+  {
+    if (is_string($str)) 
+      return $this->db->escape($str);
+    else
+      return null;
+  }
+
+  /**
+   * True in the table exists for the current database
+   *
+   * @param   string  $table  the table name
+   * @return  bool            true iff the table exists
+   */
+  //function tableExists($table)         PHP5 or older
+  public function tableExists(string $table_name)
+  {
+    $db = $this->db; 
+    $r = $db->query('SHOW TABLES FROM `'.DB_NAME.'` LIKE "' . $db->escape($table_name).'"');
+    if (!is_null($r) && $db->num_rows($r) > 0) 
+      return TRUE;
+    else
+      return FALSE; 
+  }
+  ...
+```
+
 #### Stylizing
 
 Some Boostrap styles were added to the page to get a nice appearance, and other CSS rules were defined in `css/table.css` file to manage the effects of the table.
