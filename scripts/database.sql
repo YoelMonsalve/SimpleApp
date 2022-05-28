@@ -37,11 +37,10 @@ DROP TABLE IF EXISTS `GeneInfo`;
 CREATE TABLE `GeneInfo` (
 	`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,    /* auto key */
 	`SampleNumber` int unsigned,                     /* foreign key */
-	`MedicationNo` int unsigned NOT NULL DEFAULT 1,  /* foreign key */
+	`MedicationNo` int unsigned NOT NULL DEFAULT 1,
 	`Gene`      varchar(64),
 	`Genotype`  varchar(64),
 	`Phenotype` varchar(64),
 
 	CONSTRAINT GeneInfo_fk1 FOREIGN KEY (`SampleNumber`) REFERENCES `samples`(`SampleNumber`) ON DELETE CASCADE ON UPDATE CASCADE
-	-- CONSTRAINT GeneInfo_fk2 FOREIGN KEY (`MedicationNo`) REFERENCES `CurrentMedications`(`MedicationNo`) ON DELETE CASCADE ON UPDATE CASCADE
 );

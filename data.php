@@ -60,8 +60,8 @@ function parse($path) {
  * @return  [JSON]  Array of medications. Each element in the array will correspond
  *                  with a big-row in the table.
  */
-function readDB() {
-
+function readDB() 
+{
 /* 
 The structure of the retrieved data should look like
 

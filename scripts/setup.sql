@@ -5,7 +5,7 @@
  * 
  * Run as MySQL root, for example:
  *
- *  ~$ mysql -uroot -p < <path_to_this_dir>/setup.sql
+ *  ~$ mysql -uroot -p < path/to/this/dir/setup.sql
  *
  * Author  : Yoel Monsalve.
  * Date    : 2022-05-26

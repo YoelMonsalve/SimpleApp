@@ -52,11 +52,6 @@ function toggleTable() {
   table = $('#table-drug');
   table.toggleClass('table-drug-collapsed');
 
-  // toggle attribute data-hidden
-  /*table.attr('data-hidden', (table.attr('data-hidden') == 'true' ? 'false' : 'true'));
-  console.log(table.attr('data-hidden'));
-  */
-
   if (table.hasClass('table-drug-collapsed')) {
     table.attr('data-toggle', "tooltip");
     table.attr('data-placement', "right");

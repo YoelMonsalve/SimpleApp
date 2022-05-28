@@ -6,7 +6,7 @@
  *
   * Run as MySQL root, for example:
  *
- *  ~$ mysql -uroot -p < <path_to_this_dir>/clean.sql
+ *  ~$ mysql -uroot -p < path/to/this/dir/clean.sql
  *
  * -- Be careful:  ALL DATA WILL BE DESTRUYED !!!
  *
