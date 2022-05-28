@@ -53,16 +53,16 @@ function toggleTable() {
   table.toggleClass('table-drug-collapsed');
 
   if (table.hasClass('table-drug-collapsed')) {
-    table.attr('data-toggle', "tooltip");
-    table.attr('data-placement', "right");
-    table.attr('title', "Click to see detail");
-    table.tooltip('enable')
+    //table.attr('data-toggle', "tooltip");
+    //table.attr('data-placement', "right");
+    //table.attr('title', "Click to see detail");
+    //table.tooltip('enable')
   }
   else {
-    table.removeAttr('data-toggle')
-    table.removeAttr('data-placement')
-    table.removeAttr('title')
-    table.tooltip('disable')
+    //table.removeAttr('data-toggle')
+    //table.removeAttr('data-placement')
+    //table.removeAttr('title')
+    //table.tooltip('disable')
   }
 }
 
