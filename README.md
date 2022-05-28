@@ -147,7 +147,7 @@ It is important to mention that the info shown in the page is *NOT* coming direc
 If you review the lines 6-17 of the home page `index.php`:
 
 ```php
-/* load data on page reloading */
+  /* load data on page reloading */
   $path = './data/FakeSample.json';         // <-- datafile name
   $data = parse($path);
   if (!$data) { 
