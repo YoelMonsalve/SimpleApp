@@ -250,6 +250,8 @@ Some Boostrap styles were added to the page to get a nice appearance, and other 
 
 Note that due do this, the page is responsive, meaning that it looks well even in small screens (phones or tablets).
 
+Colors were taken from the page [https://html-color.codes/](https://html-color.codes/), which offers free and public color palettes.
+
 #### Hiding/Showing the table by clicking over it
 
 This feature was built via Javascript (`jQuery` specifically), by puting/quiting the class `.col-hidden` . All can be found in `js/FakeSample.js`. Particularly:
