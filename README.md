@@ -69,6 +69,16 @@ localhost/SimpleApp
 
 in the address bar. Change the `json` file in the folder `data` and reload the page to see changes.
 
+<img alt="Screenshot-HomePage"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-34.png" width="600">
+
+<img alt="Screenshot-HomePage-2"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-37.png" width="600">
+
+<img alt="Screenshot-TableExpanded"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-43.png" width="600">
+
+<img alt="Screenshot-Mobile-Collapsed"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-53.png" width="600">
+
+<img alt="Screenshot-Mobile-Expanded"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-59.png" width="600">
+
 ### How it is made
 
 This App reads a JSON file, and is able to store the information contained in it to a MySQL database. Then, reads the info and shows it on a simple but stylized webpage, to show a handy presentation. I used some CSS/Bootstrap styles to give that appearance.
@@ -169,7 +179,7 @@ An alternative design would have been through buttons to allow the user manually
 
 #### Modularizing and reusable code
 
-When building this app, I also wanted to illustrate the concept of preferring modular design and reusable code, to keep the project ordered and easier to expand. In order to that, a class was defined in `api/sql/sql.php` (in its own namespace `\\API`) to keep all the basic functions related with SQL management (a kind of small framework), and the script `api/medication.php` contains methods to consult medications and gene info.
+When building this app, I also wanted to illustrate the concept of preferring modular design and reusable code, to keep the project ordered and easier to expand. In order to that, a class was defined in `api/sql/sql.php` (in its own namespace `\API`) to keep all the basic functions related with SQL management (a kind of small framework), and the script `api/medication.php` contains methods to consult medications and gene info.
 
 ```php
 namespace API;
