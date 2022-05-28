@@ -30,7 +30,7 @@ sudo chmod u+x configure
 sudo ./configure
 ```
 
-If instead, you want to proceed manually, you can do
+If instead, you want to proceed manually, just do
 ```bash
 find . -type f ! -name "configure" -exec chmod 644 {} \;
 find . -type d -exec chmod 750 {} \;
@@ -61,7 +61,7 @@ mysql -uroot -p < path/to/host/scripts/clean.sql
 
 This will destroy the database and user.
 
-**4.** Make sure the file `FakeSample.json` is into the folder `data`, and that it is well-formed. At this point, you chould be able to show the page in your browser, by typing
+**4.** Make sure the file `FakeSample.json` is into the folder `data`, and that it is well-formed. At this point, you should be able to show the page in your browser, by typing
 
 ```
 localhost/SimpleApp
@@ -71,7 +71,7 @@ in the address bar. Change the `json` file in the folder `data` and reload the p
 
 ### How it is made
 
-This App reads a JSON file, and is able to store the information contained into it, in a MySQL database. Then, reads the info and show it on a simple webpage, that is however some stylized to show a nice presentation. I used some CSS/Bootstrap styles to give that appearance.
+This App reads a JSON file, and is able to store the information contained in it to a MySQL database. Then, reads the info and shows it on a simple but stylized webpage, to show a handy presentation. I used some CSS/Bootstrap styles to give that appearance.
 
 #### Data
 
@@ -116,7 +116,7 @@ CREATE TABLE `GeneInfo` (
 
 The field types and keys were conveniently defined to work with the nature of the data. It was supposed that `SampleNumer` is an *integer*, and an unique number for each row. Therefore, I used it as the primary key for the `samples` table. Note that this brings in some restrictions to our system that rather serve to make it robust. For example, database will reject any attemp to introduce a `SampleNumber` that is not numeric, or repeated. The same will happen if we try introducing a medication, or gene-info, that is not correlated with a respetive sample (that is the purpose of protecting tables with foreign keys). 
 
-If these assumptions are not the case for the case study, they need to be redefined. 
+If these assumptions are not correct for the case study, they need to be redefined. 
 
 #### JSON parsing
 
@@ -135,7 +135,7 @@ $data = json_decode($data_str, true);
 The `data.php` file contains all the method to handle data. 
 
 function | meaning
---------------------
+---------|----------
 `parse()`    | to read and parse data from JSON file
 `readDB()`   | to read from database
 `saveDB()`   | to store info into database
