@@ -1,0 +1,29 @@
+/* Custom styles */
+
+/* to use along with position-absolute */
+.b-0 {
+	bottom: 0 !important
+}
+.b-1 {
+  bottom: 0.25rem !important;
+}
+.b-2 {
+  bottom: 0.5rem !important;
+}
+.b-3 {
+  bottom: 1rem !important;
+}
+.b-4 {
+  bottom: 1.5rem !important;
+}
+.b-5 {
+  bottom: 3rem !important;
+}
+
+/* font color for tables */
+.table thead {
+	color: #808080;
+}
+.table tbody {
+	color: #404040;
+}

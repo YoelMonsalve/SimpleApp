@@ -1,0 +1,122 @@
+/**
+ * CSS styles for drug table
+ *
+ * Author   : Yoel Monsalve.
+ * Date     : 2022-05-27
+ * Version  : ---
+ * Modified : 2022-05-27
+ */
+
+.table-drug{
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+    border-collapse: collapse;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+.table-drug-collapsed{
+	width: 10em;
+	border-top: none;
+	border-bottom: none;
+}
+.table-drug-collapsed:hover{
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+/* columns layout */
+.col-drug{
+	text-align: center;
+}
+.col-gene{
+	text-align: center;
+}
+.col-genotype{
+	border-right: 2px solid black;
+	text-align: center;
+}
+.col-phenotype{
+	border-right: 2px solid black;
+	text-align: center;
+}
+.col-recommendation{
+	text-align: center;
+}
+.col-visible{
+	display: block;
+}
+.col-hidden{
+	display: none;
+    transition: display 1s linear;
+}
+
+/* Colors 
+ * Source:  https://html-color.codes/
+ *          https://html-color.codes/orange
+ */
+:root {
+	--caution-light-color: #f3e5ab;    /* Vanilla */
+	--caution-bold-color:  #e3ab57;    /* Sunray */
+	--ok-light-color:      #dceadc;    /* darkseagreen-light */
+	--ok-bold-color:       #8fbc8f;    /* darkseagreen */
+}
+
+/* The "action" indicated is CAUTION */
+.drug-caution-light{
+	background-color: var(--caution-light-color);
+	color: black;
+}
+.drug-caution-bold{
+	background-color: var(--caution-bold-color);
+	color: white;
+}
+.drug-ok-light{
+	background-color: var(--ok-light-color);
+	color: black;
+}
+.drug-ok-bold{
+	background-color: var(--ok-bold-color);
+	color: white;
+}
+.drug-no-action{
+	background-color: white;
+	color: auto;
+}
+
+/* cell styles */
+.drug-generic-name{
+	font-weight: bold;
+}
+.drug-trade-name{
+	;
+}
+.gene{
+	font-weight: bold;
+	text-align: center;
+}
+th.gene{
+	font-size: 110%;
+}
+.genotype{
+	font-weight: bold;
+	text-align: center;
+}
+th.genotype{
+	font-size: 110%;
+}
+.phenotype{
+	font-weight: bold;
+	text-align: center;
+}
+th.phenotype{
+	font-size: 110%;
+}
+.drug-action{
+	font-weight: bold;
+	border-top: 2px solid black;
+	text-align: center;
+}
+.drug-group-phenotype{
+	font-weight: bold;
+	text-align: center;
+}

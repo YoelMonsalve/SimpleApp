@@ -1,0 +1,8 @@
+!#/bin/bash
+
+# change the group to www-data, so that PHP can have access to the files
+chgrp -R www-data .
+
+# configure permisions
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 750 {} \;

@@ -1,0 +1,9 @@
+#/bin/bash
+
+SOURCE=.
+DEST=~/Dropbox/VA_job/html
+
+# additional options, example --dry-run, etc.
+opts=$*    
+
+rsync -irc $SOURCE $DEST --exclude-from exclude_sync --stats $opts
