@@ -35,7 +35,7 @@ require_once(LIB_PATH_INC.'config.php');
 require_once(LIB_PATH_INC.'functions.php');
 require_once(LIB_PATH_INC.'database.php');
 require_once(LIB_PATH_INC.'session.php');
-//require_once(LIB_PATH_INC.'upload.php');
+require_once(LIB_PATH_INC.'upload.php');
 //require_once(LIB_PATH_INC.'sql.php');
 require_once(SITE_ROOT.'/api/sql/sql.php');
 

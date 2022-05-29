@@ -6,3 +6,7 @@ find . -type d -exec chmod 750 {} \;
 
 # change the group to www-data, so that PHP can have access to the files
 chgrp -R www-data .
+
+# set special permissions to folder ./data
+chown -R www-data:www-data ./data
+chmod -R g+w ./data

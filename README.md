@@ -69,11 +69,9 @@ localhost/SimpleApp
 
 in the address bar. Change the `json` file in the folder `data` and reload the page to see changes.
 
-<img alt="Screenshot-HomePage"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-34.png" width="600">
+<img alt="Screenshot-HomePage-1" src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-34.png" width="600">
 
-<img alt="Screenshot-HomePage-2"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-37.png" width="600">
-
-<img alt="Screenshot-TableExpanded"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-43.png" width="600">
+<img alt="Screenshot-HomePage-2" src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-37.png" width="600">
 
 <img alt="Screenshot-Mobile-Collapsed"  src="https://github.com/YoelMonsalve/SimpleApp/blob/master/assets/screenshots/Screenshot%20from%202022-05-28%2009-16-53.png" width="600">
 
