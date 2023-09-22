@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__).'/sql.php');
+require_once dirname(__FILE__).'/sql.php';
 
 function test1() 
 {

@@ -192,14 +192,16 @@ namespace API;
 /** 
  * This script is automatically called by 'load.php'
  *
- * SQL_PHP
+ * SQL.PHP
  * Common functions that interact with the MySQL Database.
  *
  * Author  : Yoel Monsalve
  * Date    : 2021-03-15
- * Modified: 2021-03-15
+ * Modified: 2023-09-22
+ *
+ * (C) 2022 Yoel Monsalve. All rights reserved.
  */
-require_once(dirname(__FILE__).'/../../include/load.php');
+require_once dirname(__FILE__).'/../../include/load.php';
 
 class sql {
 
@@ -222,7 +224,7 @@ class sql {
   /**
    * Escape method: to prevent against SQL-injection
    */
-  public function escape($str) 
+  public function escape($str): ?string 
   {
     if (is_string($str)) 
       return $this->db->escape($str);
@@ -236,8 +238,7 @@ class sql {
    * @param   string  $table  the table name
    * @return  bool            true iff the table exists
    */
-  //function tableExists($table)         PHP5 or older
-  public function tableExists(string $table_name)
+  public function tableExists(string $table_name): bool 
   {
     $db = $this->db; 
     $r = $db->query('SHOW TABLES FROM `'.DB_NAME.'` LIKE "' . $db->escape($table_name).'"');
@@ -247,6 +248,26 @@ class sql {
       return FALSE; 
   }
   ...
+```
+
+#### Test scripts
+
+Some code to test classes was added. For example, to test the performing of a `SQL` query through the class `\API\sql`, type on a terminal:
+
+```bash
+$ php -f api/sql/test_sql.php
+```
+
+Answer:
+```
+array(2) {
+  ["pipelineVersion"]=>
+  string(5) "0.0.1"
+  ["sequencer"]=>
+  string(10) "iontorrent"
+}
+Total of records in `samples`: 1
+
 ```
 
 #### Stylizing
