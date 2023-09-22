@@ -1,5 +1,4 @@
 <?php
-
 // -----------------------------------------------------------------------
 // DEFINE SEPARATOR ALIASES
 // -----------------------------------------------------------------------
@@ -12,15 +11,6 @@ define("DS", DIRECTORY_SEPARATOR);
 /* Defining the SITE_ROOT properly
    This is very important, by security */
 if ( !defined('SITE_ROOT') ) {
-	/* === By Yoel.- 2020.05.26 ===
-	 * 
-	 * SITE_ROOT is one level above of the folder "include", 
-	 * this way if INC_PATH = /localhost/include, then
-	 * the SITE_ROOT is deducted as /localhost ... as it 
-	 * should be. 
-	 * Also, this script is SUPPOSED to be always into the 
-	 * folder localhost/includes */
-
 	$INC_PATH = dirname(__FILE__);
 	define("SITE_ROOT", realpath($INC_PATH.'/..'));
 }

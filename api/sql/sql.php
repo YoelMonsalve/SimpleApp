@@ -62,12 +62,12 @@ class sql {
   }
 
   /**
-   * Retrieves the results of a SQL query, as an <mysqli_result> object
+   * Retrieves the results of a SQL query, as an associative array
    *
    * @param   string  $sql  the query
-   * @return  mysqli_result
+   * @return  array
    */
-  public function findBySql($sql)
+  public function findBySql($sql): array
   {
     $my_result = $this->db->query($sql);
     $result_set = $this->fetchAll($my_result);
@@ -79,7 +79,7 @@ class sql {
    * form of an array of associative arrays, each of them corresponding
    * to a record in the set.
    *
-   * @param   mysqli_result  $mysql_result  The mysqli_result
+   * @param   \mysqli_result  $mysql_result  The mysqli_result
    * @return  array                         Array of records
    */
   public function fetchAll($mysql_result) 
@@ -98,9 +98,9 @@ class sql {
    *
    * @param   string  $table_name  The table name
    * @param   int     $id          The ID for the record found
-   * @return                       The record, as an associative array
+   * @return  array                The record, as an associative array
    */
-  public function findById($table_name, $id)
+  public function findById($table_name, $id): ?array
   {
     if (!is_numeric($id) || !is_integer($id)) return NULL;
     $id = (int)$id;
@@ -161,18 +161,16 @@ class sql {
    * @param   string  $table_name  The table name
    * @param   string  $key_name    The name of a (UNIQUE) key
    * @param   int     $key_val     The value (integer) for the primary key
-   * @return                       The record, as an associative array
+   * @return  array                The record, as an associative array
    */
-  public function findByKey($table_name, $key_name, $key_val)
+  public function findByKey(string $table_name, string $key_name, int $key_val): ?array
   {
-    if (!is_numeric($id) || !is_integer($id)) return NULL;
-    if (!is_string($key_name)) return NULL;
-    $id = (int)$id;    
     $db = $this->db;
+    $key_name = $db->escape($key_name);
 
     if ($this->tableExists($table_name)) {
       $sql  = "SELECT * FROM `" . $db->escape($table_name) . "`";
-      $sql .= " WHERE id=".$id;
+      $sql .= " WHERE =`{$key_name}`={$key_val}";
       $sql .= " LIMIT 1";
       $sql_result = $db->query($sql);
       if( $sql_result && $result = $db->fetch_assoc($sql_result) )
@@ -192,9 +190,9 @@ class sql {
    * @param   string  $key_name    The name of a (UNIQUE) key
    * @param   int     $key_val     The value (integer) for the primary key
    * @param   array   $fields      Arrays of string for specifying a list of columns to be retrieved only
-   * @return                       The record, as an associative array
+   * @return  array                The record, as an associative array
    */
-  public function findByKey2($table_name, $key_name, $key_val, $fields)
+  public function findByKey2($table_name, $key_name, $key_val, $fields): ?array
   {
     if (!is_string($key_name)) return NULL;
     if (!is_numeric($key_val) || !is_integer($key_val)) return NULL;
@@ -234,9 +232,9 @@ class sql {
    *
    * @param   string  $table_name  The table name
    * @param   array   $fields      Arrays of string for specifying a list of columns to be retrieved only
-   * @return                       The record, as an associative array
+   * @return  array                The record, as an associative array
    */
-  public function findAll($table_name, $fields)
+  public function findAll(string $table_name, array $fields=[]): ?array
   {
     if (!is_array($fields)) return NULL;
     if (empty($fields)) return [];
@@ -271,9 +269,12 @@ class sql {
    *
    * @param   string  $table_name  The table name
    * @param   int     $id          The ID for the record found
-   * @return                       The record, as an associative array
+   * @return  array                The record, as an associative array
    */
-  public function deleteByKey($table_name, $key_name, $key_val)
+  public function deleteByKey(
+    string $table_name, 
+    string $key_name, 
+    int    $key_val): ?array
   {
     if (!is_string($key_name)) return NULL;
     if (!is_numeric($key_val) || !is_integer($key_val)) return NULL;
@@ -300,9 +301,9 @@ class sql {
    * Count the number of records in table
    *
    * @param   string  $table_name  The table name
-   * @return                       Number of records in table
+   * @return  int                  Number of records in table
    */
-  function countRecords($table_name)
+  function countRecords($table_name): ?int
   {
     $db = $this->db;
     if($this->tableExists($table_name))

@@ -2,11 +2,8 @@
 
 # configure permisions
 find . -type f ! -name "configure" -exec chmod 644 {} \;
-find . -type d -exec chmod 750 {} \;
-
-# change the group to www-data, so that PHP can have access to the files
-chgrp -R www-data .
+find . -type d -exec chmod 755 {} \;
 
 # set special permissions to folder ./data
-chown -R www-data:www-data ./data
-chmod -R g+w ./data
+sudo chgrp -R www-data ./data
+chmod -R g+rw ./data

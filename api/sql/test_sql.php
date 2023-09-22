@@ -9,10 +9,14 @@ function test1()
 
   $table_name = "samples";
 
-  $r = $sql->findById($table_name, 12345);
-  //$r = $sql->findByKey2($table_name, "SampleNumber", 1, ["name", "username"]);
+  /**
+   * This query will look for any record into table `samples`
+   * where `SampleNumber`=12345, and will return values for columns
+   * `pipelineVersion` and `sequencer` only.
+   */
+  $r = $sql->findByKey2($table_name, "SampleNumber", 12345, ["pipelineVersion", "sequencer"]);
+  
   var_dump($r);
-
   echo "Total of records in `{$table_name}`: {$sql->countRecords($table_name)}\n";
 }
 

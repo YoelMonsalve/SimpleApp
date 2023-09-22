@@ -10,19 +10,25 @@ This is a Demo App, for interview.
 
 ## Requisites
 
-Some PHP modules are required to this app, like `json` and `sqlite3`. On UNIX-like systems, type
+Some PHP modules are required to this app, like `json` and `mysql`. On UNIX-like systems, type
 ```
 sudo update
-sudo apt install php-sqlite3 php-json
+sudo apt install php-mysql php-json
 ```
 
 On Windows systems, consult your documentation of XAMPP/WAMPP to see how to install them.
 
+## Introduction
+
+The purpose of this task was to read some data (related to medications) from a JSON-like file (see `data/FakeSample.json`), write it to a Database, then build a system capable to display a home page, presenting the data on a stylized table.
+
+It is also desirable to code sort of a simple API for the website to manage data (see folder `api` and its modules.).
+
 ## Installation
 
-**1.** Copy the content of this repository into the host folder for your server. On Windows systems a good choice for that destination folder could be `C:\xampp\SimpleApp`, while for UNIX-like systems it would be `/var/www/html/SimpleApp`.
+**1.** Copy the content of this repository into the host folder for your server. On Windows systems a good choice for that destination folder might be `C:\xampp\SimpleApp`, whereas the same for UNIX-like systems would be `/var/www/html/SimpleApp`.
 
-**2.** On UNIX-like systems, it could be necessary to set right permissions to folders (`750` for directories, and `640` for plain files). 
+**2.** On UNIX-like systems, it could also be necessary to set up permissions (`755` for directories, and `644` for plain files). 
 The script `configure` allows you to automatically do this:
 ```bash
 cd <path/to/host>
@@ -30,15 +36,16 @@ sudo chmod u+x configure
 sudo ./configure
 ```
 
-If instead, you want to proceed manually, just do
+If you want to proceed manually instead, do just
 ```bash
 find . -type f ! -name "configure" -exec chmod 644 {} \;
-find . -type d -exec chmod 750 {} \;
+find . -type d -exec chmod 755 {} \;
 ```
 
-Also, change the group to `www-data` in order to make sure that PHP be able to access the files.
+Also, change the group of folder `./data` to `www-data` and grant it `read/write` permissions, in order to make sure that PHP is able to access and modify any file in that folder.
 ```bash
-chgrp -R www-data .
+sudo chgrp -R www-data data
+chmod -R g+rw data
 ```
 
 **3.** Set Database. Some scripts are provided to achieve this. As MySQL root user, execute:
@@ -79,11 +86,11 @@ in the address bar. Change the `json` file in the folder `data` and reload the p
 
 ### How it is made
 
-This App reads a JSON file, and is able to store the information contained in it to a MySQL database. Then, reads the info and shows it on a simple but stylized webpage, to show a handy presentation. I used some CSS/Bootstrap styles to give that appearance.
+This App reads a JSON file, then stores the information parsed in a `SQL` database. Then, reads the info and shows it on a simple but stylized webpage, this way offering a comfortable view to users. I used some CSS/Bootstrap styles to achieve that.
 
 #### Data
 
-The first step, is to structure the information using tables. My proposal to work with what is contained in the file, was by creating three tables: `samples`, `CurrentMedications` and `GeneInfo`:
+The first step, is to structure the information using tables. My proposal to deal with data contained in the file, was creating three tables: `samples`, `CurrentMedications` and `GeneInfo`:
 
 ```
 CREATE TABLE `samples` (
@@ -122,9 +129,9 @@ CREATE TABLE `GeneInfo` (
 );
 ```
 
-The field types and keys were conveniently defined to work with the nature of the data. It was supposed that `SampleNumer` is an *integer*, and an unique number for each row. Therefore, I used it as the primary key for the `samples` table. Note that this brings in some restrictions to our system that rather serve to make it robust. For example, database will reject any attemp to introduce a `SampleNumber` that is not numeric, or repeated. The same will happen if we try introducing a medication, or gene-info, that is not correlated with a respetive sample (that is the purpose of protecting tables with foreign keys). 
+The field types and keys were conveniently defined to work with the nature of the data. It was supposed that `SampleNumer` is an *integer*, and that this number is unique for each row. Therefore, I used it as the primary key for the table `samples`. Note that this brings in some restrictions to our system that rather serve to make it robust. For example, database will reject any attemp to introduce a `SampleNumber` that is not numeric, or repeated. Same if we try to introdue a medication, or gene-info, that is not correlated with a valid sample (this is the pretended purpose of protecting tables with foreign keys). 
 
-If these assumptions are not correct for the case study, they need to be redefined. 
+Note that this verification is made at *database level*, not at a `PHP` level, meaning that it would be really difficult to introduce corruption or discrepancies into the data, even if the backend code is unintentionally broken.
 
 #### JSON parsing
 
@@ -152,7 +159,7 @@ function | meaning
 It is important to mention that the info shown in the page is *NOT* coming directly from the file. Instead, the system first stores it into database, then reads from DB to show in the browser. So, theoretically the system should be able to preserve the info even if the file is deleted.
 **However**, you cannot appreciate this effect by the reason explained below.
 
-If you review the lines 6-17 of the home page `index.php`:
+If you read through the home page `index.php`, from line 17:
 
 ```php
   /* load data on page reloading */
@@ -173,7 +180,7 @@ it can be appreciated that we first load the file, then **clean** the database, 
 
 *Of course*, this is not the ideal behavior, but as it is just a sample, I want to keep it simple.
 
-An alternative design would have been through buttons to allow the user manually controlling when a new file is going to be uploaded, ... but that would be a more complicated architecture.
+An alternative design would have been using buttons to enable user for manually controlling when a new file is to be uploaded, ... but that would be a more complicated architecture.
 
 #### Modularizing and reusable code
 
@@ -244,9 +251,18 @@ class sql {
 
 #### Stylizing
 
-Some Boostrap styles were added to the page to get a nice appearance, and other CSS rules were defined in `css/table.css` file to manage the effects of the table.
-
-Note that due do this, the page is responsive, meaning that it looks well even in small screens (phones or tablets).
+Some Boostrap styles were added to the page to get a nice appearance, and other CSS rules were defined in `css/table.css` file to manage the effects of the table. 
+```css
+.table-drug{
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+    border-collapse: collapse;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+...
+```
+Look at the file `css/table.css` for more details. Nicely, and because of using Bootstrap, the page is made responsive and looks well on all screens (phones or tablets).
 
 Colors were taken from the page [https://html-color.codes/](https://html-color.codes/), which offers free and public color palettes.
 

@@ -1,18 +1,18 @@
 <?php
 
-/**
- * Landing page
- *
- * Author   : Yoel Monsalve.
- * Date     : 2022-05-26
- * Version  : ---
- * Modified : 2022-05-26
- */
-
+  /**
+   * Landing page
+   *
+   * Author   : Yoel Monsalve.
+   * Date     : 2022-05-26
+   * Version  : ---
+   * Modified : 2022-05-26
+   */
+  
   ob_start();
-  require_once(dirname(__FILE__).'/include/load.php');
-  require_once(dirname(__FILE__).'/data.php');
-
+  require_once dirname(__FILE__).'/include/load.php';
+  require_once dirname(__FILE__).'/data.php';
+  
   /* load data on page reloading */
   $path = './data/FakeSample.json';         // <-- datafile name
   $data = parse($path);
@@ -45,7 +45,6 @@
     }
   }
 ?>
-
 
 <?php
   /* get data-action attribute for table */

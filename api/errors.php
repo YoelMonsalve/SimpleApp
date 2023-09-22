@@ -8,7 +8,6 @@ namespace API\Error;
  * date:      2022-03-30
  * modified:  2022-03-30
  *
- * (C) 2022 Yoel Monsalve. All rights reserved.
  */
 
 class APIError extends \Exception {

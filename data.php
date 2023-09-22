@@ -32,10 +32,10 @@ if (isset($_POST['filename'])) {
  * Parses a JSON file
  *
  * @param   [string]  $path  path to the file
- * @return            an associative array representing the JSON data, or NULL
+ * @return  array     an associative array representing the JSON data, or NULL
  *                    if an error occurred.
  */
-function parse($path) {
+function parse($path): ?array {
 
 	/* raw string */
 	$data_str = file_get_contents($path);

@@ -29,9 +29,9 @@ $(document).ready( function(e) {
 
   $('#file_upload').click( function() {
     if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
-        alert('The File APIs are not fully supported in this browser.');
-        return;
-      } 
+      alert('The File APIs are not fully supported in this browser.');
+      return;
+    } 
   })
 
   $('#file_upload').change( function() {
