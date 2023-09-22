@@ -52,7 +52,7 @@ chmod -R g+rw data
 ```bash
 mysql -uroot -p < path/to/host/scripts/setup.sql
 ```
-This will create a database and a user, which will be used for the application. It is always a good idea to create a separate MySQL user, so that the application can act on behalf of him (instead of proceding with `root` user, what is a *very bad* idea for security reasons).
+This will create a database and a user, who will be used for the application to run queries. It is always a good idea to create a separate MySQL user, so that the application can act on behalf of him (instead of proceeding with `root` user, what is a *very bad* idea for security reasons).
 
 ```bash
 mysql -uroot -p < path/to/host/scripts/database.mysql
