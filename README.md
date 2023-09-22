@@ -258,7 +258,7 @@ Some code to test classes was added. For example, to test the performing of a `S
 $ php -f api/sql/test_sql.php
 ```
 
-Answer:
+Output:
 ```
 array(2) {
   ["pipelineVersion"]=>
